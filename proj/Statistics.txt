@@ -1,0 +1,7 @@
+Number of Rocks: 69
+Number of Food: 24
+Number of Workers: 18
+Number of Warriors: 5
+Number of Sponges: 3
+Number of Queens: 1
+Number of Hatches: 18
