@@ -1,15 +1,25 @@
 package myOwnAnthill;
-
+/**
+ * This class implements warriors
+ * @authors K.O.  A.P.  E.B.K
+ *
+ */
 public class Warrior extends Inhabitant implements I_Warrior {
 	
 	public static int numberOfWarriors = 0; 
-	
+	/**
+	 * This is the constructor of the warrior. It counts the number od the warriors.
+	 * @param x stores the 'x' position on the map.
+	 * @param y stores the 'y' position on the map.
+	 */
 	public Warrior(int x, int y) {
 		super(x, y);
 		this.type = 'W';
 		numberOfWarriors++;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void turn(Map map) {
 		if(isAlive(map)) {
@@ -28,7 +38,9 @@ public class Warrior extends Inhabitant implements I_Warrior {
 			}
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean spongeNearby(Map map) {
 		if(positionX == 0 && positionY == 0)	//leftUpper corner
@@ -89,7 +101,9 @@ public class Warrior extends Inhabitant implements I_Warrior {
 		else
 			return false;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void attack(Map map) {
 		for(int i = 0; i < 1; i++) {	//loop which is giving possible to break
@@ -209,22 +223,30 @@ public class Warrior extends Inhabitant implements I_Warrior {
 			}
 		}
 	}
-
+	/**
+	 * 
+	 */
 	@Override
 	public void attackUp(int x, int y, Map map) {
 		map.field[y - 1][x].visualization = '-';
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void attackRight(int x, int y, Map map) {
 		map.field[y][x + 1].visualization = '-';
 	}
-
+	/**
+	 * 
+	 */
 	@Override
 	public void attackDown(int x, int y, Map map) {
 		map.field[y + 1][x].visualization = '-';
 	}
-
+	/**
+	 * 
+	 */
 	@Override
 	public void attackLeft(int x, int y, Map map) {
 		map.field[y][x - 1].visualization = '-';

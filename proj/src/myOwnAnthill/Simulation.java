@@ -1,5 +1,9 @@
 package myOwnAnthill;
-
+/**
+ * This is the main class where the whole simulation runs.
+ * @authors K.O.  A.P.  E.B.K
+ *
+ */
 public class Simulation {
 	
 	public static void main(String[] args) {
@@ -29,7 +33,10 @@ public class Simulation {
 		
 		Statistics.saveStatistics();
 	}
-	
+	/**
+	 * This method implements the break between iterations.
+	 * @param time stores the break time (ms)
+	 */
 	public static void sleep(int time) {
 		try {
 			Thread.sleep(time);

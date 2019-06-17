@@ -1,15 +1,25 @@
 package myOwnAnthill;
-
+/**
+ * This is the abstract class which implements inhabitants.
+ * @authors K.O.  A.P.  E.B.K
+ *
+ */
 public abstract class Inhabitant extends Organism implements I_Inhabitant {
 
 	protected int distanceFromNest;
 	protected String direction;
 	protected boolean wayToExit = false;
-	
+	/**
+	 * This is the constructor of the inhabitant.
+	 * @param x stores the 'x' position on the map.
+	 * @param y stores the 'y' position on the map.
+	 */
 	public Inhabitant(int x, int y) {
 		super(x, y);
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void turn(Map map) {
 		if(isAlive(map)) {
@@ -25,7 +35,9 @@ public abstract class Inhabitant extends Organism implements I_Inhabitant {
 		}
 		//do nothing if not alive
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void escape(Map map) {
 		if(direction == "Right") {
@@ -59,7 +71,9 @@ public abstract class Inhabitant extends Organism implements I_Inhabitant {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean goUp(Map map) {
 		if(map.field[positionY - 1][positionX].visualization == '-') {
@@ -70,7 +84,9 @@ public abstract class Inhabitant extends Organism implements I_Inhabitant {
 		}
 		return false;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean goRight(Map map) {
 		if(map.field[positionY][positionX + 1].visualization == '-') {
@@ -81,7 +97,9 @@ public abstract class Inhabitant extends Organism implements I_Inhabitant {
 		}
 		return false;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean goDown(Map map) {
 		if(map.field[positionY + 1][positionX].visualization == '-') {
@@ -92,7 +110,9 @@ public abstract class Inhabitant extends Organism implements I_Inhabitant {
 		}
 		return false;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean goLeft(Map map) {
 		if(map.field[positionY][positionX - 1].visualization == '-') {

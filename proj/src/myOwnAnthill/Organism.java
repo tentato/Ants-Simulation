@@ -1,7 +1,10 @@
 package myOwnAnthill;
-
 import java.util.Random;
-
+/**
+ * This is the abstract class which implements organisms.
+ * @authors K.O.  A.P.  E.B.K
+ *
+ */
 public abstract class Organism implements I_Organism {
 	protected int positionX;
 	protected int positionY;
@@ -9,18 +12,26 @@ public abstract class Organism implements I_Organism {
 	protected boolean died;
 	protected final int maxHunger = 100;
 	protected char type;
-	
+	/**
+	 * This is the constructor of the organism.
+	 * @param x stores the 'x' position on the map.
+	 * @param y stores the 'y' position on the map.
+	 */
 	Organism(int x, int y) {
 		this.positionX = x;
 		this.positionY = y;
 		this.hunger = 100;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void setPlace(Map map) {
 		map.setField(positionX, positionY, type);
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void turn(Map map) {
 		if(isAlive(map)) {
@@ -33,7 +44,9 @@ public abstract class Organism implements I_Organism {
 		}
 		//do nothing if not alive
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void move(Map map) {		
 		map.unsetField(positionX, positionY);
@@ -68,7 +81,9 @@ public abstract class Organism implements I_Organism {
 				
 		setPlace(map);
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean isAlive(Map map) {
 		if(hunger > 0 && map.field[positionY][positionX].visualization == type)
@@ -78,7 +93,9 @@ public abstract class Organism implements I_Organism {
 			return false;
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void die(Map map) {
 		if(!died) {
@@ -86,7 +103,9 @@ public abstract class Organism implements I_Organism {
 			died = true;
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean foodNearby(Map map) {
 		if(positionX == 0 && positionY == 0)	//leftUpper corner
@@ -147,7 +166,9 @@ public abstract class Organism implements I_Organism {
 		else
 			return false;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void eat(Map map) {
 		for(int i = 0; i < 1; i++) {	//loop which is giving possible to break
@@ -268,28 +289,36 @@ public abstract class Organism implements I_Organism {
 			}
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void eatUp(int x, int y, Map map) {
 		map.depot[0].nutrition += hunger;
 		hunger = maxHunger;
 		map.field[y - 1][x].visualization = '-';
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void eatRight(int x, int y, Map map) {
 		map.depot[0].nutrition += hunger;
 		hunger = maxHunger;
 		map.field[y][x + 1].visualization = '-';
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void eatDown(int x, int y, Map map) {
 		map.depot[0].nutrition += hunger;
 		hunger = maxHunger;
 		map.field[y + 1][x].visualization = '-';
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void eatLeft(int x, int y, Map map) {
 		map.depot[0].nutrition += hunger;

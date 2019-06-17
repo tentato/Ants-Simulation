@@ -1,11 +1,14 @@
 package myOwnAnthill;
 import java.util.Random;
-
+/**
+ * This class stores the objects on the map.??
+ * @authors K.O.  A.P.  E.B.K
+ *
+ */
 public class Map implements I_Settling {
 	
 	public int height = 20; //Y
 	public int width = 20;	//X
-	
 	public final int rockPossibility = 18;	//0-never, 1-always, 2-usually, 20-rare... infinity...
 	public final int foodPossibility = 15;
 	
@@ -18,7 +21,9 @@ public class Map implements I_Settling {
 	Queen queen[] = new Queen[1];	//It's not working differently
 	Depot depot[] = new Depot[1];
 	
-	
+	/**
+	 * This method creates the fields on the map, implements how the map looks like.
+	 */
 	public void create() {
 		//Making fields
 		for(int i = 0; i < height; i++) {
@@ -119,9 +124,10 @@ public class Map implements I_Settling {
 		putSponge(19, 0);
 		putSponge(0, 19);
 	}
-	
-	public void show() {
-		
+	/**
+	 * This method shows the map.
+	 */
+	public void show() {	
 		for(int i = 0; i < height; i++) {
 			for(int j = 0; j < width; j++) {
 				System.out.print(field[i][j].visualization + " ");
@@ -130,15 +136,26 @@ public class Map implements I_Settling {
 		}
 		System.out.println();
 	}
-	
+	/**
+	 * This method visualize empty fields.
+	 * @param x stores the 'x' position on the map.
+	 * @param y stores the 'y' position on the map.
+	 */
 	public void unsetField(int x, int y) {
 		field[y][x].visualization = '-';
 	}
-	
+	/**
+	 * This method visualize fields with specimen.
+	 * @param x stores the 'x' position on the map.
+	 * @param y stores the 'y' position on the map.
+	 * @param species ??
+	 */
 	public void setField(int x, int y, char species) {
 		field[y][x].visualization = species;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void putWorker(int x, int y) {
 		ant[Worker.numberOfWorkers] = new Worker(x, y);
@@ -146,7 +163,9 @@ public class Map implements I_Settling {
 		if(field[y][x].visualization == 'F') Food.numberOfFood--;
 		setField(x, y, 'A');
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void putWarrior(int x, int y) {
 		warrior[Warrior.numberOfWarriors] = new Warrior(x, y);
@@ -154,7 +173,9 @@ public class Map implements I_Settling {
 		if(field[y][x].visualization == 'F') Food.numberOfFood--;
 		setField(x, y, 'W');
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void putSponge(int x, int y) {
 		sponge[Sponge.numberOfSponges] = new Sponge(x, y);
@@ -162,7 +183,9 @@ public class Map implements I_Settling {
 		if(field[y][x].visualization == 'F') Food.numberOfFood--;
 		setField(x, y, 'S');
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void putQueen(int x, int y) {
 		queen[Queen.numberOfQueens] = new Queen(x, y);

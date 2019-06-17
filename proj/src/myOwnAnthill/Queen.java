@@ -1,13 +1,20 @@
 package myOwnAnthill;
-
+/**
+ * This class implements queen.
+ * @authors K.O.  A.P.  E.B.K
+ *
+ */
 public class Queen extends Inhabitant implements I_Queen {
 	public boolean wayToDepo;
 	public boolean wayFromDepo;
 	public int distanceFromNest;
-
 	public static int numberOfQueens = 0; //will always be 1
 	public static int numberOfHatches = 0; 
-	
+	/**
+	 * This is the constructor of the queen.
+	 * @param x stores the 'x' position on the map.
+	 * @param y stores the 'y' position on the map.
+	 */
 	public Queen(int x, int y) {
 		super(x, y);
 		this.type = 'Q';
@@ -16,7 +23,9 @@ public class Queen extends Inhabitant implements I_Queen {
 		wayFromDepo = false;
 		numberOfQueens++;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void turn(Map map) {	
 		if(isAlive(map)) {
@@ -66,7 +75,9 @@ public class Queen extends Inhabitant implements I_Queen {
 			}
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void eat(Map map) { //From depot
 			if(map.depot[0].nutrition > maxHunger - hunger) {
@@ -75,7 +86,9 @@ public class Queen extends Inhabitant implements I_Queen {
 			}
 				
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean produce(Map map) {
 		
