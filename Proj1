@@ -1,0 +1,19 @@
+#! /usr/bin/bash
+
+if [ $# -lt 1 ]; then
+    printf "Należy podać 1 argument - ścieżkę do drzewa katalogów\nw których nazwy plików regularnych zostaną zmienione\n"
+    exit 1
+fi
+
+if [ ! -d $1 ]; then
+    echo "Katalog o podanej nazwie nie istnieje lub nie jest plikiem regularnym"
+    exit 2
+fi
+
+path=$(realpath $1)
+
+find $path -type f |
+awk '               \
+BEGIN { FS = "/" ; OFS = "Z"}   \
+$NF ~ /^.*[.]exe.*$/ \
+'      
