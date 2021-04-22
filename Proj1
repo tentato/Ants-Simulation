@@ -16,4 +16,5 @@ find $path -type f |
 awk '               \
 BEGIN { FS = "/" ; OFS = "Z"}   \
 $NF ~ /^.*[.]exe.*$/ \
+$NF ~ /\.exe$|\.exe\..*$/ \
 '      
